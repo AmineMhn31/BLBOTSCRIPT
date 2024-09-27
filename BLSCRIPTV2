@@ -246,6 +246,23 @@
         settingsButton.onclick = toggleSettings;
         controlsContainer.appendChild(settingsButton);
 
+        const joinButton = document.createElement('button');
+        joinButton.textContent = 'Join BLUM 🅱️';
+        joinButton.style.padding = '4px 8px';
+        joinButton.style.backgroundColor = '#5d2a8f';
+        joinButton.style.color = 'white';
+        joinButton.style.border = 'none';
+        joinButton.style.borderRadius = '10px';
+        joinButton.style.cursor = 'pointer';
+        joinButton.style.marginRight = '5px';
+
+        // Set the URL to your Telegram bot
+        joinButton.onclick = function() {
+        window.open('https://t.me/blum/app?startapp=ref_LtzA8KxO7F', '_blank');
+        };
+        controlsContainer.appendChild(joinButton);
+
+
         const settingsContainer = document.createElement('div');
         settingsContainer.style.display = 'none';
         settingsContainer.style.marginTop = '10px';
@@ -281,9 +298,9 @@
             if (isSettingsOpen) {
                 settingsContainer.style.display = 'block';
                 settingsContainer.innerHTML = '';
-                settingsContainer.appendChild(createSettingInput('Bomb Hits:', 'BombHits', 0, 10));
-                settingsContainer.appendChild(createSettingInput('Ice Hits:', 'IceHits', 0, 10));
-                settingsContainer.appendChild(createSettingInput('Flower Skip %:', 'flowerSkipPercentage', 0, 100));
+                settingsContainer.appendChild(createSettingInput('Bomb Hits 💣:', 'BombHits', 0, 10));
+                settingsContainer.appendChild(createSettingInput('Ice Hits 🧊:', 'IceHits', 0, 10));
+                settingsContainer.appendChild(createSettingInput('Flower Skip 🌺:', 'flowerSkipPercentage', 0, 100));
             } else {
                 settingsContainer.style.display = 'none';
             }
