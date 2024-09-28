@@ -201,66 +201,148 @@
             observer.observe(appElement, { childList: true, subtree: true });
         }
 
-        // UI Controls
-        const controlsContainer = document.createElement('div');
-        controlsContainer.style.position = 'fixed';
-        controlsContainer.style.top = '0';
-        controlsContainer.style.left = '50%';
-        controlsContainer.style.transform = 'translateX(-50%)';
-        controlsContainer.style.zIndex = '9999';
-        controlsContainer.style.backgroundColor = 'black';
-        controlsContainer.style.padding = '10px 20px';
-        controlsContainer.style.borderRadius = '10px';
-        document.body.appendChild(controlsContainer);
+// UI Controls
+const controlsContainer = document.createElement('div');
+controlsContainer.style.position = 'fixed';
+controlsContainer.style.bottom = '10px';  // Positioned at the bottom
+controlsContainer.style.right = '10px';  // Positioned to the right
+controlsContainer.style.zIndex = '9999';
+controlsContainer.style.backgroundColor = 'black';
+controlsContainer.style.padding = '10px 20px';
+controlsContainer.style.borderRadius = '10px';
+controlsContainer.style.boxShadow = '0px 4px 8px rgba(0, 0, 0, 0.2)'; // Added shadow
+document.body.appendChild(controlsContainer);
 
-        const codeVoygerLabel = document.createElement('div');
-        codeVoygerLabel.innerHTML = '<strong> 𓆩 𝓐𝓜𝓘𝓝𝓔 𓆪 </strong>';
-        codeVoygerLabel.style.fontSize = '24px';
-        codeVoygerLabel.style.color = 'white';
-        codeVoygerLabel.style.fontFamily = 'Arial, sans-serif';
-        codeVoygerLabel.style.fontWeight = 'bold';
-        codeVoygerLabel.style.textAlign = 'center';
-        codeVoygerLabel.style.marginBottom = '10px';
-        controlsContainer.appendChild(codeVoygerLabel);
+const codeVoygerLabel = document.createElement('div');
+codeVoygerLabel.innerHTML = '<strong> 𓆩 𝓐𝓜𝓘𝓝𝓔 𓆪 </strong>';
+codeVoygerLabel.style.fontSize = '24px';
+codeVoygerLabel.style.color = 'white';
+codeVoygerLabel.style.fontFamily = 'Arial, sans-serif';
+codeVoygerLabel.style.fontWeight = 'bold';
+codeVoygerLabel.style.textAlign = 'center';
+codeVoygerLabel.style.marginBottom = '10px';
+controlsContainer.appendChild(codeVoygerLabel);
 
-        const pauseButton = document.createElement('button');
-        pauseButton.textContent = '▶️';
-        pauseButton.style.padding = '4px 8px';
-        pauseButton.style.backgroundColor = '#5d2a8f';
-        pauseButton.style.color = 'white';
-        pauseButton.style.border = 'none';
-        pauseButton.style.borderRadius = '10px';
-        pauseButton.style.cursor = 'pointer';
-        pauseButton.style.marginRight = '5px';
-        pauseButton.onclick = toggleGamePause;
-        controlsContainer.appendChild(pauseButton);
+// Pause Button
+const pauseButton = document.createElement('button');
+pauseButton.textContent = '▶️';
+pauseButton.style.padding = '4px 8px';
+pauseButton.style.backgroundColor = '#5d2a8f';
+pauseButton.style.color = 'white';
+pauseButton.style.border = 'none';
+pauseButton.style.borderRadius = '10px';
+pauseButton.style.cursor = 'pointer';
+pauseButton.style.marginRight = '5px';
+pauseButton.style.transition = 'background-color 0.3s ease'; // Added hover effect
+pauseButton.onmouseover = () => { pauseButton.style.backgroundColor = '#7638b7'; };
+pauseButton.onmouseout = () => { pauseButton.style.backgroundColor = '#5d2a8f'; };
+pauseButton.onclick = toggleGamePause;
+controlsContainer.appendChild(pauseButton);
 
-        const settingsButton = document.createElement('button');
-        settingsButton.textContent = '⚙️';
-        settingsButton.style.padding = '4px 8px';
-        settingsButton.style.backgroundColor = '#5d2a8f';
-        settingsButton.style.color = 'white';
-        settingsButton.style.border = 'none';
-        settingsButton.style.borderRadius = '10px';
-        settingsButton.style.cursor = 'pointer';
-        settingsButton.onclick = toggleSettings;
-        controlsContainer.appendChild(settingsButton);
+// Settings Button
+const settingsButton = document.createElement('button');
+settingsButton.textContent = '⚙️';
+settingsButton.style.padding = '4px 8px';
+settingsButton.style.backgroundColor = '#5d2a8f';
+settingsButton.style.color = 'white';
+settingsButton.style.border = 'none';
+settingsButton.style.borderRadius = '10px';
+settingsButton.style.cursor = 'pointer';
+settingsButton.style.transition = 'background-color 0.3s ease'; // Added hover effect
+settingsButton.onmouseover = () => { settingsButton.style.backgroundColor = '#7638b7'; };
+settingsButton.onmouseout = () => { settingsButton.style.backgroundColor = '#5d2a8f'; };
+settingsButton.onclick = toggleSettings;
+controlsContainer.appendChild(settingsButton);
 
-        const joinButton = document.createElement('button');
-        joinButton.textContent = 'Join BLUM 🅱️';
-        joinButton.style.padding = '4px 8px';
-        joinButton.style.backgroundColor = '#5d2a8f';
-        joinButton.style.color = 'white';
-        joinButton.style.border = 'none';
-        joinButton.style.borderRadius = '10px';
-        joinButton.style.cursor = 'pointer';
-        joinButton.style.marginRight = '5px';
+// Join Button
+const joinButton = document.createElement('button');
+joinButton.textContent = 'Join BLUM 🅱️';
+joinButton.style.padding = '4px 8px';
+joinButton.style.backgroundColor = '#5d2a8f';
+joinButton.style.color = 'white';
+joinButton.style.border = 'none';
+joinButton.style.borderRadius = '10px';
+joinButton.style.cursor = 'pointer';
+joinButton.style.marginRight = '5px';
+joinButton.style.transition = 'background-color 0.3s ease'; // Added hover effect
+joinButton.onmouseover = () => { joinButton.style.backgroundColor = '#7638b7'; };
+joinButton.onmouseout = () => { joinButton.style.backgroundColor = '#5d2a8f'; };
 
-        // Set the URL to your Telegram bot
-        joinButton.onclick = function() {
-        window.open('https://t.me/blum/app?startapp=ref_LtzA8KxO7F', '_blank');
-        };
-        controlsContainer.appendChild(joinButton);
+// Set the URL to your Telegram bot
+joinButton.onclick = function() {
+  window.open('https://t.me/blum/app?startapp=ref_LtzA8KxO7F', '_blank');
+};
+controlsContainer.appendChild(joinButton);
+
+// Size Button
+const sizeButton = document.createElement('button');
+sizeButton.textContent = '🔍 Size';
+sizeButton.style.padding = '4px 8px';
+sizeButton.style.backgroundColor = '#5d2a8f';
+sizeButton.style.color = 'white';
+sizeButton.style.border = 'none';
+sizeButton.style.borderRadius = '10px';
+sizeButton.style.cursor = 'pointer';
+sizeButton.style.marginLeft = '5px';
+sizeButton.style.transition = 'background-color 0.3s ease'; // Added hover effect
+sizeButton.onmouseover = () => { sizeButton.style.backgroundColor = '#7638b7'; };
+sizeButton.onmouseout = () => { sizeButton.style.backgroundColor = '#5d2a8f'; };
+
+// Function to toggle size
+let isLarge = false;
+sizeButton.onclick = function() {
+  if (isLarge) {
+    controlsContainer.style.transform = 'scale(1)'; // Default size
+    isLarge = false;
+  } else {
+    controlsContainer.style.transform = 'scale(1.5)'; // Increased size
+    isLarge = true;
+  }
+};
+controlsContainer.appendChild(sizeButton);
+
+// Masque Bar Button
+const masqueButton = document.createElement('button');
+masqueButton.textContent = '🙈';
+masqueButton.style.padding = '4px 8px';
+masqueButton.style.backgroundColor = '#5d2a8f';
+masqueButton.style.color = 'white';
+masqueButton.style.border = 'none';
+masqueButton.style.borderRadius = '10px';
+masqueButton.style.cursor = 'pointer';
+masqueButton.style.marginLeft = '5px';
+masqueButton.style.transition = 'background-color 0.3s ease'; // Added hover effect
+masqueButton.onmouseover = () => { masqueButton.style.backgroundColor = '#7638b7'; };
+masqueButton.onmouseout = () => { masqueButton.style.backgroundColor = '#5d2a8f'; };
+
+// Toggle visibility of the control bar
+let isHidden = false;
+masqueButton.onclick = function() {
+  if (isHidden) {
+    controlsContainer.style.display = 'block'; // Show the controls
+    masqueButton.textContent = '🙈';
+    isHidden = false;
+  } else {
+    controlsContainer.style.display = 'none'; // Hide the controls
+    masqueButton.textContent = '👁️ Show Bar';
+    isHidden = true;
+  }
+};
+
+// Create a separate container for the Masque Button so it remains visible
+const masqueContainer = document.createElement('div');
+masqueContainer.style.position = 'fixed';
+masqueContainer.style.bottom = '10px';
+masqueContainer.style.left = '10px';
+masqueContainer.style.zIndex = '9999';
+masqueContainer.style.backgroundColor = 'black';
+masqueContainer.style.padding = '5px 10px';
+masqueContainer.style.borderRadius = '10px';
+masqueContainer.style.boxShadow = '0px 4px 8px rgba(0, 0, 0, 0.2)'; // Added shadow
+masqueContainer.appendChild(masqueButton);
+document.body.appendChild(masqueContainer);
+
+
 
 
         const settingsContainer = document.createElement('div');
@@ -308,7 +390,7 @@
 
         function toggleGamePause() {
             isGamePaused = !isGamePaused;
-            pauseButton.textContent = isGamePaused ? '▶' : '❚❚';
+            pauseButton.textContent = isGamePaused ? '▶️' : '⏸️';
         }
 
         // Apply enhanced fingerprinting evasion
